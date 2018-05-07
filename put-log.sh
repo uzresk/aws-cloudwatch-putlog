@@ -23,9 +23,9 @@ TimeStamp=`expr $TimeStamp / 1000000`
 
 if [ "$UploadSequenceToken" != "" ];
 then
-  CMD="aws logs put-log-events --log-group-name "$LogGroupName" --log-stream-name "$LogStreamName" --log-events \"timestamp=$TimeStamp,message=$Mess\" --sequence-token $UploadSequenceToken"
+  CMD="aws logs put-log-events --log-group-name "$LogGroupName" --log-stream-name "$LogStreamName" --log-events \"timestamp=$TimeStamp,message='$Mess'\" --sequence-token $UploadSequenceToken"
 else
-  CMD="aws logs put-log-events --log-group-name "$LogGroupName" --log-stream-name "$LogStreamName" --log-events \"timestamp=$TimeStamp,message=$Mess\""
+  CMD="aws logs put-log-events --log-group-name "$LogGroupName" --log-stream-name "$LogStreamName" --log-events \"timestamp=$TimeStamp,message='$Mess'\""
 fi
 
 sh -c "${CMD}"
